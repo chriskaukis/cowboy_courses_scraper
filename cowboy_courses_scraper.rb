@@ -233,14 +233,14 @@ module CowboyCoursesScraper
           elsif td['headers'] == 'Session'
             ds = td.text.gsub(/[^0-9]/, '')
             if ds.length == 12
-              m1 = ds[0, 2]
-              d1 = ds[2, 2]
-              y1 = ds[4, 2]
+              m1 = ds[0, 2].to_i
+              d1 = ds[2, 2].to_i
+              y1 = ds[4, 2].to_i + 2000
               starts_at = DateTime.new(y1, m1, d1, starts_at.hour, starts_at.min)
               
-              m2 = ds[6, 2]
-              d2 = ds[8, 2]
-              y3 = ds[10, 2]
+              m2 = ds[6, 2].to_i
+              d2 = ds[8, 2].to_i
+              y2 = ds[10, 2].to_i + 2000
               ends_at = DateTime.new(y2, m2, d2, ends_at.hour, ends_at.min)
             end
           end
