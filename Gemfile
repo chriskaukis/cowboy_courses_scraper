@@ -1,1 +1,2 @@
 gem 'mechanize'
+gem 'resque'
