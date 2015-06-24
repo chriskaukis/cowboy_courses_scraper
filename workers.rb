@@ -49,7 +49,7 @@ class SectionsScraperJob
   def self.perform(term_id, subject_id, course_id)
     sections = SectionsScraper.new.scrape(term_id, subject_id, course_id)
     sections.each do |section|
-      puts "Scraped sections for #{term_id} -> #{subject_id} -> #{course_id}"
+      # TODO: Do something with each section. Probably save to a database at this point. 
     end
   end
 end
