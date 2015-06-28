@@ -1,2 +1,6 @@
+source 'https://rubygems.org'
 gem 'mechanize'
 gem 'resque'
+gem 'pg'
+gem 'activerecord'
+gem 'rake'

@@ -191,7 +191,7 @@ module CowboyCoursesScraper
               section.starts_at = Time.parse($2)
               section.ends_at = Time.parse($6)
               section.starts_at = section.starts_at + (12 * 60 * 60) if section.ends_at.hour > 12 && (section.ends_at.hour - 12) > section.starts_at.hour
-              days = $1.gsub(/\s+/, '')
+              section.days = $1.gsub(/\s+/, '')
             else
               # Most likely: "To Be Arranged"
             end
@@ -199,7 +199,7 @@ module CowboyCoursesScraper
             td.search('br').each do |n|
               n.replace("\n")
             end
-            section.instructors += td.text.split("\n").map { |n| n.strip }
+            section.instructors += td.text.split("\n").map { |n| n.strip }.reject { |i| i.empty? }
           elsif td['headers'] == 'Session'
             ds = td.text.gsub(/[^0-9]/, '')
             if ds.length == 12
